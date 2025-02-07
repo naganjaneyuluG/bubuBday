@@ -156,24 +156,25 @@
     </p>
   </div>
 
-  <!-- Audio with autoplay and muted initially -->
-  <audio id="backgroundMusic" loop autoplay muted>
-    <source src="https://naganjaneyulug.github.io/bubuBday/song.mp3" type="audio/mp3">
+  <!-- Audio with autoplay but waiting for user interaction -->
+  <audio id="backgroundMusic" loop>
+    <source src="song.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
   <script>
     window.addEventListener('load', () => {
       const backgroundMusic = document.getElementById('backgroundMusic');
-      backgroundMusic.volume = 0.5;
-
-      // Unmute the music after a short delay
-      setTimeout(() => {
-        backgroundMusic.muted = false;
-        backgroundMusic.play().catch(error => {
-          console.log('Autoplay failed: ', error);
+      backgroundMusic.volume = 1; // Set the volume to 1 (full volume)
+      
+      // Add a click event listener to start music
+      document.body.addEventListener('click', () => {
+        backgroundMusic.play().then(() => {
+          backgroundMusic.muted = false;
+        }).catch(error => {
+          console.log("Autoplay failed:", error);
         });
-      }, 500);
+      });
 
       // Create floating hearts with red color
       setInterval(createHeart, 500);
