@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Wishes</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      color: white;
+      text-align: center;
+      background-image: url('https://source.unsplash.com/1920x1080/?romantic,stars,night');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      display: inline-block;
+      max-width: 80%;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ffbb33;
+    }
+    p {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+    button {
+      background-color: #ff3366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Happy 7th Birthday Celebration, My Love! 🎂✨</h1>
+    <p>
+      From the day I met you, life has been a beautiful journey — filled with unforgettable moments.  
+      Through every challenge, you've stood by my side, proving your unwavering love and strength.  
+      Every relationship is a blend of joy, hardships, and cherished memories, and ours is no exception.  
+      But what makes us special is the priceless commitment and meaningful contributions we've made to nurture this bond.  
+      Today, I pray to God to bless you with happiness, prosperity, and everything your heart desires.  
+      Whether I am by your side or not, my love for you will never waver — my heart will beat for you until my last breath.  
+      Happy birthday, my dearest bubu, my love, my better half, my forever partner. You will always be my soulmate.  
+    </p>
+    <button onclick="playWishes()">Play Wishes 🎧</button>
+  </div>
+
+  <audio id="backgroundMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function playWishes() {
+      const text = `Happy 7th Birthday Celebration, My Love!
+      From the day I met you, life has been a beautiful journey — filled with unforgettable moments. 
+      Through every challenge, you've stood by my side, proving your unwavering love and strength. 
+      Every relationship is a blend of joy, hardships, and cherished memories, and ours is no exception. 
+      But what makes us special is the priceless commitment and meaningful contributions we've made to nurture this bond. 
+      Today, I pray to God to bless you with happiness, prosperity, and everything your heart desires. 
+      Whether I am by your side or not, my love for you will never waver — my heart will beat for you until my last breath. 
+      Happy birthday, my dearest bubu, my love, my better half, my forever partner. You will always be my soulmate.`;
+
+      // Text to Speech
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = 'en-US';
+      speech.pitch = 1;
+      speech.rate = 1;
+
+      // Play background music and text-to-speech
+      const backgroundMusic = document.getElementById('backgroundMusic');
+      backgroundMusic.volume = 0.5;
+      backgroundMusic.play();
+      window.speechSynthesis.speak(speech);
+    }
+  </script>
+</body>
+</html>
