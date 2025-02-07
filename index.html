@@ -51,52 +51,20 @@
       color: #ffbb33;
     }
 
-    /* Heart animation with red color */
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: red;
-      transform: rotate(45deg);
-      animation: float 5s infinite ease-in-out;
-    }
-
-    .heart:before,
-    .heart:after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: red;
-      border-radius: 50%;
-    }
-
-    .heart:before {
-      top: -10px;
-      left: 0;
-    }
-
-    .heart:after {
-      left: -10px;
+    /* Loading screen styles */
+    .loading-screen {
+      position: fixed;
       top: 0;
-    }
-
-    @keyframes float {
-      0% {
-        opacity: 0;
-        transform: translateY(0) scale(0.8) rotate(45deg);
-        background-color: red;
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(-50vh) scale(1) rotate(45deg);
-        background-color: red;
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-100vh) scale(1.5) rotate(45deg);
-        background-color: red;
-      }
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      z-index: 9999;
     }
 
     /* Responsive layout for mobile */
@@ -153,14 +121,20 @@
   </style>
 </head>
 <body>
-  <div class="container">
+
+  <!-- Loading screen -->
+  <div class="loading-screen" id="loadingScreen">
+    Coming Soon...
+  </div>
+
+  <div class="container" id="content" style="display: none;">
     <h1 id="birthdayMessageTelugu">పుట్టినరోజు శుభాకాంక్షలు నా ప్రియమైన పిల్ల పంది 🐷! 🎂✨</h1>
     <h1 id="birthdayMessageEnglish" style="display: none;">Happy Birthday my dear little piggy 🐷! 🎂✨</h1>
 
     <p id="messageTelugu">
       నిన్ను కలిసిన రోజు(Dec 10 2018) నుంచి ఇది మనo కలిసి జరుపుకున్న 7వ పుట్టినరోజు.  
       ఈ కాలంలో ప్రతి సమస్యలో నువ్వు నా వెంటే నిలబడ్డావు, నీ అద్భుతమైన ప్రేమను నిరూపించావు.  
-      ప్రతి సంబంధం ఆనందం😁, బాధల🥹 కలయికతో కూడి ఉంటుంది, మనది కూడా అంతే.  
+      ప్రతి బంధం, ఆనందం😁, బాధల🥹 కలయికతో కూడి ఉంటుంది, మనది కూడా అంతే.  
       కానీ మన ప్రత్యేకత ఏమిటంటే మనం ఒకరిపై 🫵 ఒకరు చూపిన అంకితభావం, పరస్పర సహకారం వలనే ఈ రోజు ఇలా వున్నాం.  
       ఈ ప్రత్యేక రోజున నీకు దేవుడు సంపద, సంతోషం, నీకు కావలసిన ప్రతిదీ ప్రసాదించాలని కోరుకుంటాను.  
       నేను నీతో ఉన్నా లేకపోయినా నా ప్రేమ ఎప్పటికీ నిలిచిపోతుంది — నా చివరి శ్వాస వరకు నా గుండె నీ కోసం కొట్టుకుంటుంది. <br>
@@ -192,7 +166,7 @@
     window.addEventListener('load', () => {
       const backgroundMusic = document.getElementById('backgroundMusic');
       backgroundMusic.volume = 1; // Set the volume to 1 (full volume)
-      
+
       // Add a click event listener to start music
       document.body.addEventListener('click', () => {
         backgroundMusic.play().then(() => {
@@ -204,6 +178,9 @@
 
       // Create floating hearts with red color
       setInterval(createHeart, 500);
+
+      // Check the current time
+      checkTime();
     });
 
     // Generate floating hearts with red color
@@ -214,6 +191,20 @@
       heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 5000);
+    }
+
+    // Function to check if it's 11:59 PM IST (6:29 PM UTC)
+    function checkTime() {
+      const now = new Date();
+      const targetUTC = new Date();
+      targetUTC.setUTCHours(18, 29, 0);  // 6:29 PM UTC
+
+      if (now >= targetUTC) {
+        document.getElementById('loadingScreen').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } else {
+        setTimeout(checkTime, 60000);  // Check again in 1 minute
+      }
     }
 
     // Function to toggle between Telugu and English
