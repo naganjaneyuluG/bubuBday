@@ -30,6 +30,7 @@
       max-width: 80%;
       z-index: 1;
       text-align: center;
+      margin: 0 auto;
     }
 
     h1 {
@@ -41,6 +42,13 @@
     p {
       font-size: 1.5rem;
       line-height: 2rem;
+      margin: 0 15px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 1rem;
+      color: #ffbb33;
     }
 
     /* Heart animation with red color */
@@ -88,6 +96,47 @@
         opacity: 0;
         transform: translateY(-100vh) scale(1.5) rotate(45deg);
         background-color: red;
+      }
+    }
+
+    /* Responsive layout for mobile */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .container {
+        padding: 20px;
+        max-width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .container {
+        padding: 15px;
+        max-width: 95%;
       }
     }
   </style>
