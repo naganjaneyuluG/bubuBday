@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="te">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Wishes</title>
+  <title>పుట్టినరోజు శుభాకాంక్షలు</title>
   <style>
     body {
       font-family: 'Georgia', serif;
       color: white;
       text-align: center;
-      background-image: url('https://source.unsplash.com/1920x1080/?romantic,stars,night');
+      background-image: url('pexels-david-besh-884788.jpg');
       background-size: cover;
       background-position: center;
       height: 100vh;
@@ -17,78 +17,127 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       overflow: hidden;
+      position: relative;
     }
+
     .container {
       background: rgba(0, 0, 0, 0.7);
       padding: 30px;
       border-radius: 15px;
       display: inline-block;
       max-width: 80%;
+      z-index: 1;
+      text-align: center;
     }
+
     h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
       color: #ffbb33;
     }
+
     p {
       font-size: 1.5rem;
       line-height: 2rem;
     }
-    button {
-      background-color: #ff3366;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      margin-top: 15px;
-      cursor: pointer;
-      border-radius: 10px;
+
+    /* Heart animation with red color */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: float 5s infinite ease-in-out;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.8) rotate(45deg);
+        background-color: red;
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-50vh) scale(1) rotate(45deg);
+        background-color: red;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(1.5) rotate(45deg);
+        background-color: red;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Happy 7th Birthday Celebration, My Love! 🎂✨</h1>
+    <h1>పుట్టినరోజు శుభాకాంక్షలు నా ప్రియమైన పిల్ల పంది 🐷! 🎂✨</h1>
     <p>
-      From the day I met you, life has been a beautiful journey — filled with unforgettable moments.  
-      Through every challenge, you've stood by my side, proving your unwavering love and strength.  
-      Every relationship is a blend of joy, hardships, and cherished memories, and ours is no exception.  
-      But what makes us special is the priceless commitment and meaningful contributions we've made to nurture this bond.  
-      Today, I pray to God to bless you with happiness, prosperity, and everything your heart desires.  
-      Whether I am by your side or not, my love for you will never waver — my heart will beat for you until my last breath.  
-      Happy birthday, my dearest bubu, my love, my better half, my forever partner. You will always be my soulmate.  
+      నిన్ను కలిసిన రోజునుంచి ఇది మన కలిసి జరుపుకున్న 7వ పుట్టినరోజు.  
+      ఈ కాలంలో ప్రతి సమస్యలో నువ్వు నా వెంటే నిలబడ్డావు, నీ అద్భుతమైన ప్రేమను నిరూపించావు.  
+      ప్రతి సంబంధం ఆనందం, బాధల కలయికతో కూడి ఉంటుంది, మనది కూడా అంతే.  
+      కానీ మన ప్రత్యేకత ఏమిటంటే మనం ఒకరిపై ఒకరు చూపిన అంకితభావం, పరస్పర సహకారం.  
+      ఈ ప్రత్యేక రోజున నీకు దేవుడు సంపద, సంతోషం, నీకు కావలసిన ప్రతిదీ ప్రసాదించాలని కోరుకుంటాను.  
+      నేను నీతో ఉన్నా లేకపోయినా నా ప్రేమ ఎప్పటికీ నిలిచిపోతుంది — నా చివరి శ్వాస వరకు నా గుండె నీ కోసం కొట్టుకుంటుంది. 
+      ఇట్లూ 
+      <h2>నీ బుజ్జి పంది 🐷   </h2>
     </p>
-    <button onclick="playWishes()">Play Wishes 🎧</button>
   </div>
 
-  <audio id="backgroundMusic" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+  <!-- Audio with autoplay and muted initially -->
+  <audio id="backgroundMusic" loop autoplay muted>
+    <source src="song.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
   <script>
-    function playWishes() {
-      const text = `Happy 7th Birthday Celebration, My Love!
-      From the day I met you, life has been a beautiful journey — filled with unforgettable moments. 
-      Through every challenge, you've stood by my side, proving your unwavering love and strength. 
-      Every relationship is a blend of joy, hardships, and cherished memories, and ours is no exception. 
-      But what makes us special is the priceless commitment and meaningful contributions we've made to nurture this bond. 
-      Today, I pray to God to bless you with happiness, prosperity, and everything your heart desires. 
-      Whether I am by your side or not, my love for you will never waver — my heart will beat for you until my last breath. 
-      Happy birthday, my dearest bubu, my love, my better half, my forever partner. You will always be my soulmate.`;
-
-      // Text to Speech
-      const speech = new SpeechSynthesisUtterance(text);
-      speech.lang = 'en-US';
-      speech.pitch = 1;
-      speech.rate = 1;
-
-      // Play background music and text-to-speech
+    window.addEventListener('load', () => {
       const backgroundMusic = document.getElementById('backgroundMusic');
       backgroundMusic.volume = 0.5;
-      backgroundMusic.play();
-      window.speechSynthesis.speak(speech);
+
+      // Unmute the music after a short delay
+      setTimeout(() => {
+        backgroundMusic.muted = false;
+        backgroundMusic.play().catch(error => {
+          console.log('Autoplay failed: ', error);
+        });
+      }, 500);
+
+      // Create floating hearts with red color
+      setInterval(createHeart, 500);
+    });
+
+    // Generate floating hearts with red color
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
     }
   </script>
 </body>
