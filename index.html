@@ -139,12 +139,25 @@
         max-width: 95%;
       }
     }
+
+    .language-toggle {
+      margin-top: 20px;
+      background-color: #ffbb33;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>పుట్టినరోజు శుభాకాంక్షలు నా ప్రియమైన పిల్ల పంది 🐷! 🎂✨</h1>
-    <p>
+    <h1 id="birthdayMessageTelugu">పుట్టినరోజు శుభాకాంక్షలు నా ప్రియమైన పిల్ల పంది 🐷! 🎂✨</h1>
+    <h1 id="birthdayMessageEnglish" style="display: none;">Happy Birthday my dear little piggy 🐷! 🎂✨</h1>
+
+    <p id="messageTelugu">
       నిన్ను కలిసిన రోజు(Dec 10 2018) నుంచి ఇది మనo కలిసి జరుపుకున్న 7వ పుట్టినరోజు.  
       ఈ కాలంలో ప్రతి సమస్యలో నువ్వు నా వెంటే నిలబడ్డావు, నీ అద్భుతమైన ప్రేమను నిరూపించావు.  
       ప్రతి సంబంధం ఆనందం😁, బాధల🥹 కలయికతో కూడి ఉంటుంది, మనది కూడా అంతే.  
@@ -152,8 +165,21 @@
       ఈ ప్రత్యేక రోజున నీకు దేవుడు సంపద, సంతోషం, నీకు కావలసిన ప్రతిదీ ప్రసాదించాలని కోరుకుంటాను.  
       నేను నీతో ఉన్నా లేకపోయినా నా ప్రేమ ఎప్పటికీ నిలిచిపోతుంది — నా చివరి శ్వాస వరకు నా గుండె నీ కోసం కొట్టుకుంటుంది. <br>
       ఇట్లూ !!!
-      <h2>నీ బుజ్జి పంది 🐷   </h2>
     </p>
+    <p id="messageEnglish" style="display: none;">
+      Since the day I met you (Dec 10, 2018), this is the 7th birthday we've celebrated together.  
+      In this time, you’ve stood by me in every problem and shown me your incredible love.  
+      Every relationship is a mix of joy 😁 and pain 🥹, and ours is no different.  
+      But our special bond lies in the dedication 🫵 and mutual support we’ve shown for each other, and that’s why we are here today.  
+      On this special day, I pray that God grants you wealth, happiness, and everything you need.  
+      Whether I’m with you or not, my love will always remain — my heart will beat for you until my last breath. <br>
+      With love !!!
+    </p>
+
+    <h2 id="birthdaySignatureTelugu">నీ బుజ్జి పంది 🐷</h2>
+    <h2 id="birthdaySignatureEnglish" style="display: none;">Your little piggy 🐷</h2>
+
+    <button class="language-toggle" onclick="toggleLanguage()">Switch to English</button>
   </div>
 
   <!-- Audio with autoplay but waiting for user interaction -->
@@ -188,6 +214,35 @@
       heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 5000);
+    }
+
+    // Function to toggle between Telugu and English
+    function toggleLanguage() {
+      const teluguText = document.getElementById('birthdayMessageTelugu');
+      const englishText = document.getElementById('birthdayMessageEnglish');
+      const teluguMessage = document.getElementById('messageTelugu');
+      const englishMessage = document.getElementById('messageEnglish');
+      const teluguSignature = document.getElementById('birthdaySignatureTelugu');
+      const englishSignature = document.getElementById('birthdaySignatureEnglish');
+      const button = document.querySelector('.language-toggle');
+
+      if (teluguText.style.display === 'none') {
+        teluguText.style.display = 'block';
+        englishText.style.display = 'none';
+        teluguMessage.style.display = 'block';
+        englishMessage.style.display = 'none';
+        teluguSignature.style.display = 'block';
+        englishSignature.style.display = 'none';
+        button.textContent = 'Switch to English';
+      } else {
+        teluguText.style.display = 'none';
+        englishText.style.display = 'block';
+        teluguMessage.style.display = 'none';
+        englishMessage.style.display = 'block';
+        teluguSignature.style.display = 'none';
+        englishSignature.style.display = 'block';
+        button.textContent = 'Switch to Telugu';
+      }
     }
   </script>
 </body>
