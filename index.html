@@ -43,7 +43,7 @@
       line-height: 2rem;
     }
 
-    /* Rainbow heart animation */
+    /* Heart animation with red color */
     .heart {
       position: absolute;
       width: 20px;
@@ -79,23 +79,10 @@
         transform: translateY(0) scale(0.8) rotate(45deg);
         background-color: red;
       }
-      14% {
-        background-color: orange;
-      }
-      28% {
-        background-color: yellow;
-      }
-      42% {
-        background-color: green;
-      }
-      57% {
-        background-color: blue;
-      }
-      71% {
-        background-color: indigo;
-      }
-      85% {
-        background-color: violet;
+      50% {
+        opacity: 1;
+        transform: translateY(-50vh) scale(1) rotate(45deg);
+        background-color: red;
       }
       100% {
         opacity: 0;
@@ -120,7 +107,8 @@
     </p>
   </div>
 
-  <audio id="backgroundMusic" loop>
+  <!-- Audio with autoplay and muted initially -->
+  <audio id="backgroundMusic" loop autoplay muted>
     <source src="song.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
@@ -130,16 +118,19 @@
       const backgroundMusic = document.getElementById('backgroundMusic');
       backgroundMusic.volume = 0.5;
 
-      // Play background music directly without muting
-      backgroundMusic.play().catch(error => {
-        console.log('Autoplay failed: ', error);
-      });
+      // Unmute the music after a short delay
+      setTimeout(() => {
+        backgroundMusic.muted = false;
+        backgroundMusic.play().catch(error => {
+          console.log('Autoplay failed: ', error);
+        });
+      }, 500);
 
-      // Create floating hearts with rainbow colors
+      // Create floating hearts with red color
       setInterval(createHeart, 500);
     });
 
-    // Generate floating hearts with rainbow colors
+    // Generate floating hearts with red color
     function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart';
